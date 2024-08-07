@@ -99,7 +99,7 @@ const BackgroundEditorPanel = ({
             }}
             label="Background"
           />
-          {/* {PRESET_OPTIONS.map((preset) => (
+          {PRESET_OPTIONS.map((preset) => (
             <FormField
               key={preset.name}
               label={preset.label}
@@ -114,60 +114,12 @@ const BackgroundEditorPanel = ({
                     onChange={(val) =>
                       handleChangeCustomPreset(preset.name, val)
                     }
-                    disabled={!effectValue.useBg}
+                    disabled={effectValue.bgRemoved}
                   />
                 </Box>
               )}
             />
-          ))} */}
-          <FormField
-            label="Grayscale"
-            value={effectValue.grayscale}
-            control={(props) => (
-              <Box paddingStart="2u">
-                <Slider
-                  {...props}
-                  max={100}
-                  min={0}
-                  step={1}
-                  onChange={(val) => handleChangeCustomPreset("grayscale", val)}
-                  disabled={effectValue.bgRemoved}
-                />
-              </Box>
-            )}
-          />
-          <FormField
-            label="Blur"
-            value={effectValue.blur}
-            control={(props) => (
-              <Box paddingStart="2u">
-                <Slider
-                  {...props}
-                  max={10}
-                  min={0}
-                  step={1}
-                  onChange={(val) => handleChangeCustomPreset("blur", val)}
-                  disabled={effectValue.bgRemoved}
-                />
-              </Box>
-            )}
-          />
-          <FormField
-            label="Sephia"
-            value={effectValue.sephia}
-            control={(props) => (
-              <Box paddingStart="2u">
-                <Slider
-                  {...props}
-                  max={100}
-                  min={0}
-                  step={1}
-                  onChange={(val) => handleChangeCustomPreset("sephia", val)}
-                  disabled={effectValue.bgRemoved}
-                />
-              </Box>
-            )}
-          />
+          ))}
         </Rows>
       </Rows>
       <Rows spacing="1u">

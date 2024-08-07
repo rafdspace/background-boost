@@ -6,7 +6,7 @@ import PRESET_SEPHIA_IMAGE from "../assets/preset-sephia.png";
 export const PRESET_OPTIONS: PresetOption[] = [
   {
     name: "grayscale",
-    label: "Grayscale",
+    label: "Black & White",
     image: PRESET_GRAYSCALE_IMAGE,
     maxVal: 100,
   },

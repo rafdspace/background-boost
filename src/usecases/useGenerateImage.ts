@@ -36,7 +36,6 @@ const useGenerateImage = () => {
 
   const generateImageWithoutBg = useCallback(async () => {
     if (!imageUrl || imageWithoutBg || fetchOnce.current) return;
-
     fetchOnce.current = true;
 
     try {
@@ -66,8 +65,8 @@ const useGenerateImage = () => {
       // Wait for the image to load before setting it to state
       image.onload = () => {
         setImageWithoutBg(image);
-        appProcess.broadcastMessage({ isImageWithoutBgReady: true });
       };
+      appProcess.broadcastMessage({ isImageWithoutBgReady: true });
     } catch (error) {
       const errMessage = error instanceof Error ? error.message : String(error);
       appProcess.broadcastMessage({
@@ -79,7 +78,7 @@ const useGenerateImage = () => {
         },
       });
     }
-  }, [appProcess, imageUrl, imageWithoutBg, fetch]);
+  }, [imageUrl, imageWithoutBg, imageWithBg, fetch]);
 
   useEffect(() => {
     generateImageUrl();

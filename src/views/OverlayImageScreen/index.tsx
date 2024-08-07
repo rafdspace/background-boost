@@ -18,15 +18,13 @@ const OverlayImageScreen = () => {
   // Removed image bg processed when overlay is opened
   useEffect(() => {
     if (imageWithoutBg) return;
-
     appProcess.registerOnMessage((_, message) => {
       const canStartProcessImage = Boolean(message.startProcessImage);
-
       if (canStartProcessImage) {
         generateImageWithoutBg();
       }
     });
-  }, [appProcess, imageWithoutBg, generateImageWithoutBg]);
+  }, [imageWithoutBg, generateImageWithoutBg]);
 
   // Init canvas
   useEffect(() => {
@@ -43,7 +41,7 @@ const OverlayImageScreen = () => {
 
     // Set the `isImageReady` state
     appProcess.broadcastMessage({ isImageReady: true });
-  }, [appProcess, imageWithBg, imageWithoutBg, getCanvas]);
+  }, [imageWithBg, imageWithoutBg, getCanvas]);
 
   useEffect(() => {
     if (!imageWithBg || !imageWithoutBg) return;
@@ -59,7 +57,7 @@ const OverlayImageScreen = () => {
         // Clear the canvas
         context.clearRect(0, 0, width, height);
 
-        if (!bgRemoved) {
+        if (bgRemoved) {
           // Draw only the image without background
           context.filter = "none";
           context.drawImage(imageWithoutBg, 0, 0, width, height);
@@ -99,7 +97,11 @@ const OverlayImageScreen = () => {
       }
 
       // Reset the `isImageReady` state
-      appProcess.broadcastMessage({ isImageReady: false });
+      appProcess.broadcastMessage({
+        isImageReady: false,
+        isImageWithoutBgReady: false,
+        isSavingFinish: true,
+      });
     });
   }, [currentSelectedObject, appProcess]);
 

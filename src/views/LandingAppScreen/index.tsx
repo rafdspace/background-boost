@@ -27,11 +27,15 @@ const LandingAppScreen = () => {
 
   const handleClose = () => {
     overlay.close({ reason: "aborted" });
+    setIsImageReady(false);
+    setIsImageWithoutBgReady(false);
+    setIsImageReady(false);
   };
 
   useEffect(() => {
     appProcess.registerOnMessage((_, message) => {
       const imageReady = Boolean(message.isImageReady);
+      const savingFinish = Boolean(message.isSavingFinish);
       const errorMessage = message.alert?.message || "";
 
       if (errorMessage) {
@@ -41,21 +45,30 @@ const LandingAppScreen = () => {
 
       if (imageReady) {
         setIsLoadImage(false);
-        setIsImageSaving(false);
+        setIsImageReady(true);
       }
-      setIsImageReady(imageReady);
+
+      if (savingFinish) {
+        setIsImageSaving(false);
+        setIsImageWithoutBgReady(false);
+        setIsImageReady(false);
+      }
     });
-  }, [appProcess, overlay, setIsLoadImage, setIsImageReady]);
+  }, [
+    overlay,
+    setIsLoadImage,
+    setIsImageReady,
+    setAlertMessage,
+    setIsImageSaving,
+  ]);
 
   useEffect(() => {
     appProcess.registerOnMessage((_, message) => {
       const imageWithoutBgReady = Boolean(message.isImageWithoutBgReady);
 
-      if (imageWithoutBgReady) {
-        setIsImageWithoutBgReady(true);
-      }
+      if (imageWithoutBgReady) setIsImageWithoutBgReady(true);
     });
-  }, [appProcess, setIsLoadImage, setIsImageReady]);
+  }, [setIsLoadImage, setIsImageReady]);
 
   useEffect(() => {
     if (!overlay.isOpen) return;
@@ -75,7 +88,7 @@ const LandingAppScreen = () => {
     <div className={styles.scrollContainer}>
       <Rows spacing="2u">
         {alertMessage && <Alert tone="critical">{alertMessage}</Alert>}
-        {overlay.isOpen && isImageWithoutBgReady ? (
+        {isImageWithoutBgReady ? (
           <BackgroundEditorPanel
             isSaving={isImageSaving}
             handleClose={handleClose}
@@ -84,6 +97,7 @@ const LandingAppScreen = () => {
         ) : (
           <SelectImagePanel
             isLoading={isLoadImage}
+            isImageSaving={isImageSaving}
             isCanOpenOverlay={overlay.canOpen}
             handleOpenOverlay={handleOpenOverlay}
           />

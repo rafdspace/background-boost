@@ -2,12 +2,18 @@ import { Button, Rows, Text } from "@canva/app-ui-kit";
 
 interface SelectImagePanelProps {
   isLoading?: boolean;
+  isImageSaving?: boolean;
   isCanOpenOverlay?: boolean;
   handleOpenOverlay: () => void;
 }
 
 const SelectImagePanel = (props: SelectImagePanelProps) => {
-  const { isLoading, isCanOpenOverlay = false, handleOpenOverlay } = props;
+  const {
+    isLoading,
+    isImageSaving,
+    isCanOpenOverlay = false,
+    handleOpenOverlay,
+  } = props;
 
   return (
     <Rows spacing="2u">
@@ -22,7 +28,7 @@ const SelectImagePanel = (props: SelectImagePanelProps) => {
 
       <Button
         variant="primary"
-        disabled={!isCanOpenOverlay}
+        disabled={!isCanOpenOverlay || isImageSaving}
         onClick={handleOpenOverlay}
         loading={isLoading}
       >
