@@ -1,26 +1,18 @@
-import { Button, Rows, Text } from "@canva/app-ui-kit";
-import { addNativeElement } from "@canva/design";
-import styles from "styles/components.css";
+import { appProcess } from "@canva/platform";
+import LandingAppScreen from "./views/LandingAppScreen";
+import OverlayImageScreen from "./views/OverlayImageScreen";
+import "context-filter-polyfill";
 
 export const App = () => {
-  const onClick = () => {
-    addNativeElement({
-      type: "TEXT",
-      children: ["Hello world!"],
-    });
-  };
+  const context = appProcess.current.getInfo();
 
-  return (
-    <div className={styles.scrollContainer}>
-      <Rows spacing="2u">
-        <Text>
-          To make changes to this app, edit the <code>src/app.tsx</code> file,
-          then close and reopen the app in the editor to preview the changes.
-        </Text>
-        <Button variant="primary" onClick={onClick} stretch>
-          Do something cool
-        </Button>
-      </Rows>
-    </div>
-  );
+  if (context.surface === "object_panel") {
+    return <LandingAppScreen />;
+  }
+
+  if (context.surface === "selected_image_overlay") {
+    return <OverlayImageScreen />;
+  }
+
+  throw new Error(`Invalid surface: ${context.surface}`);
 };
