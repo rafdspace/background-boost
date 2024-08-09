@@ -1,7 +1,14 @@
 import { Box, LoadingIndicator, Rows, Text, Title } from "@canva/app-ui-kit";
+import { useMemo } from "react";
+import { TIPS } from "src/constants";
 import styles from "styles/components.css";
 
 const ProcessImageLoader = () => {
+  const tips = useMemo(() => {
+    const randomIndex = Math.floor(Math.random() * TIPS.length);
+    return TIPS[randomIndex];
+  }, []);
+
   return (
     <div className={styles.scrollContainer}>
       <Box
@@ -17,8 +24,7 @@ const ProcessImageLoader = () => {
             </Title>
             <LoadingIndicator size="large" />
             <Text alignment="center" tone="tertiary" size="small">
-              "Try experimenting with different presets to find the perfect look
-              for your photos!"
+              {tips}
             </Text>
           </Rows>
         </Rows>

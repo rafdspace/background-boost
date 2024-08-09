@@ -34,3 +34,8 @@ export const DEFAULT_PRESET_VALUE: EffectValue = {
 export enum AppBroadcastMessageLabel {
   PresetChange = "Preset Change",
 }
+
+export const TIPS: string[] = [
+  "Try different effects to find the perfect style for your photos.",
+  "Play around with the intensity sliders to add a unique touch to each image.",
+];
