@@ -24,10 +24,10 @@ BackgroundBoost is built using the [Canva Apps SDK Starter Kit](https://github.c
 
 ## Getting Started
 
-1. **Choose Your Image**: Select the image you want to enhance from your existing Canva design.
+1. **Choose Your Image from Current Design**: Select the photo you want to enhance from your existing Canva design.
 2. **Apply Effects**: Select from presets like black and white, blur, and sepia to transform your background.
 3. **Adjust Intensity**: Fine-tune the intensity of each effect to get the perfect look.
-4. **Save to Apply**: Save your changes to see the enhanced image applied directly to your Canva design.
+4. **Save to Apply in Current Design**: Save your changes to see the enhanced image applied directly to your Canva design.
 
 ## Tips for Using BackgroundBoost
 
@@ -40,7 +40,7 @@ BackgroundBoost is built using the [Canva Apps SDK Starter Kit](https://github.c
 
 ## Contact
 
-For support or feedback, please reach out to us at [me@rafdspace.com](mailto:me@rafdspace.com).
+For support or feedback, please reach out to us at [https://rafdspace-main.vercel.app/](https://rafdspace-main.vercel.app/).
 
 ---
 
