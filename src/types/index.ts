@@ -1,4 +1,4 @@
-export type PresetType = "grayscale" | "blur" | "sephia";
+export type PresetType = "grayscale" | "blur" | "sepia";
 
 export interface PresetOption {
   name: PresetType;
@@ -10,6 +10,6 @@ export interface PresetOption {
 export interface EffectValue {
   grayscale: number;
   blur: number;
-  sephia: number;
+  sepia: number;
   bgRemoved: boolean;
 }

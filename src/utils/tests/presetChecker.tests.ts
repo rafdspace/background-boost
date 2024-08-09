@@ -6,7 +6,7 @@ describe("presetChecker", () => {
     const value: EffectValue = {
       grayscale: 100,
       blur: 0,
-      sephia: 0,
+      sepia: 0,
       bgRemoved: false,
     };
     expect(presetChecker(value)).toBe(true);
@@ -16,7 +16,7 @@ describe("presetChecker", () => {
     const value: EffectValue = {
       grayscale: 0,
       blur: 10,
-      sephia: 0,
+      sepia: 0,
       bgRemoved: false,
     };
     expect(presetChecker(value)).toBe(true);
@@ -26,7 +26,7 @@ describe("presetChecker", () => {
     const value: EffectValue = {
       grayscale: 0,
       blur: 0,
-      sephia: 100,
+      sepia: 100,
       bgRemoved: false,
     };
     expect(presetChecker(value)).toBe(true);
@@ -36,7 +36,7 @@ describe("presetChecker", () => {
     const value: EffectValue = {
       grayscale: 50,
       blur: 5,
-      sephia: 0,
+      sepia: 0,
       bgRemoved: false,
     };
     expect(presetChecker(value)).toBe(false);
@@ -46,7 +46,7 @@ describe("presetChecker", () => {
     const value: EffectValue = {
       grayscale: 0,
       blur: 5,
-      sephia: 100,
+      sepia: 100,
       bgRemoved: false,
     };
     expect(presetChecker(value)).toBe(false);
@@ -56,7 +56,7 @@ describe("presetChecker", () => {
     const value: EffectValue = {
       grayscale: 100,
       blur: 5,
-      sephia: 50,
+      sepia: 50,
       bgRemoved: false,
     };
     expect(presetChecker(value)).toBe(false);

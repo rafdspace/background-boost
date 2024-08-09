@@ -1,7 +1,7 @@
 import type { PresetOption, EffectValue } from "src/types";
 import PRESET_GRAYSCALE_IMAGE from "../assets/preset-grayscale.png";
 import PRESET_BLUR_IMAGE from "../assets/preset-blur.png";
-import PRESET_SEPHIA_IMAGE from "../assets/preset-sephia.png";
+import PRESET_SEPIA_IMAGE from "../assets/preset-sepia.png";
 
 export const PRESET_OPTIONS: PresetOption[] = [
   {
@@ -17,9 +17,9 @@ export const PRESET_OPTIONS: PresetOption[] = [
     maxVal: 10,
   },
   {
-    name: "sephia",
-    label: "Sephia",
-    image: PRESET_SEPHIA_IMAGE,
+    name: "sepia",
+    label: "Sepia",
+    image: PRESET_SEPIA_IMAGE,
     maxVal: 100,
   },
 ];
@@ -27,7 +27,7 @@ export const PRESET_OPTIONS: PresetOption[] = [
 export const DEFAULT_PRESET_VALUE: EffectValue = {
   grayscale: 0,
   blur: 0,
-  sephia: 0,
+  sepia: 0,
   bgRemoved: false,
 };
 

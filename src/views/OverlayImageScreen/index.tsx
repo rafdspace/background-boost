@@ -52,7 +52,7 @@ const OverlayImageScreen = () => {
         const { width, height } = imageWithBg;
         canvas.width = width;
         canvas.height = height;
-        const { grayscale, blur, sephia, bgRemoved } = message.value;
+        const { grayscale, blur, sepia, bgRemoved } = message.value;
 
         // Clear the canvas
         context.clearRect(0, 0, width, height);
@@ -63,7 +63,7 @@ const OverlayImageScreen = () => {
           context.drawImage(imageWithoutBg, 0, 0, width, height);
         } else {
           // Apply filters only to the background image
-          context.filter = `grayscale(${grayscale}%) blur(${blur}px) sepia(${sephia}%)`;
+          context.filter = `grayscale(${grayscale}%) blur(${blur}px) sepia(${sepia}%)`;
           context.drawImage(imageWithBg, 0, 0, width, height);
 
           // Draw the image without background on top with no filters
